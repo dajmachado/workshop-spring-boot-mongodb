@@ -8,4 +8,5 @@ import com.dajmachado.wrokshopmongo.domain.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
+
 }
