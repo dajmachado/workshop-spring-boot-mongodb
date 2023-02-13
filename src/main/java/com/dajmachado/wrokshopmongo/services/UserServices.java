@@ -1,14 +1,15 @@
 package com.dajmachado.wrokshopmongo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dajmachado.wrokshopmongo.domain.User;
+import com.dajmachado.wrokshopmongo.dto.UserDTO;
 import com.dajmachado.wrokshopmongo.repository.UserRepository;
 import com.dajmachado.wrokshopmongo.services.exception.ObjectNotFoundException;
-import java.util.Optional;
 
 @Service
 public class UserServices {
@@ -27,5 +28,12 @@ public class UserServices {
 			return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getNome(), objDTO.getEmail());
+	}
 
 }
